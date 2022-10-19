@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-remark-design-system",
+  "name": "gatsby-remark-design-system-towavephone",
   "description": "Remark plugin to create your design system with preconfigured specimens",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "author": "LekoArts <hello@lekoarts.de>",
   "repository": {
     "type": "git",

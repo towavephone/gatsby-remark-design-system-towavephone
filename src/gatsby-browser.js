@@ -17,4 +17,17 @@ exports.onClientEntry = () => {
     e.clearSelection();
     showTooltip(e.trigger);
   });
+
+  window.playTranslateSound = src => {
+    const decodeSrc = decodeURIComponent(src);
+    const htmlCode = `<audio src="${decodeSrc}" controls></audio>`;
+    const blob = new Blob([htmlCode], {
+      type: 'text/html',
+    });
+    window.open(
+      URL.createObjectURL(blob),
+      '',
+      `width=300,height=100,top=${window.innerHeight},left=${window.innerWidth}`
+    );
+  };
 };

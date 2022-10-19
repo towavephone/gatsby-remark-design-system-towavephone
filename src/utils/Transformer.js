@@ -15,11 +15,11 @@ module.exports = class Transformer {
     const nodeValue = node.value;
     if (SpecimenName === 'audio') {
       const value = parser.standardParse(nodeValue);
-      const { autoplay, loop, name, src } = value;
+      const { autoplay, loop, name, src, preload, isSound, lan, speed } = value;
       if (value.span) {
         _span = value.span;
       }
-      const Specimen = new Audio(autoplay, classPrefix, loop, name, src);
+      const Specimen = new Audio(autoplay, classPrefix, loop, name, src, preload, isSound, lan, speed);
       return {
         SpecimenSpan: _span,
         SpecimenOutput: Specimen.output(),
