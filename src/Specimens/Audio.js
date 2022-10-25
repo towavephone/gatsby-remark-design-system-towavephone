@@ -17,11 +17,9 @@ module.exports = class Audio {
     this.loop = loop;
     this.name = name;
     this.isSound = isSound;
-    if (isSound === 'true') {
-      this.src = encodeURIComponent(`https://fanyi.baidu.com/gettts?lan=${lan}&text=${name}}&spd=${speed}&source=web`);
-    } else {
-      this.src = src;
-    }
+    this.lan = lan;
+    this.speed = speed;
+    this.src = src;
     this.preload = preload;
   }
 
@@ -32,7 +30,10 @@ module.exports = class Audio {
         <div class="${this.classPrefix}-audio__title">
           <span class="${this.classPrefix}-audio__audio__icon">${svg.audio()}</span>${this.name}<span class="${
         this.classPrefix
-      }-audio__play__sound__icon" onclick="playTranslateSound('${this.src}')">${svg.playSound()}</span>
+      }-audio__play__sound__icon" data-lan="${this.lan}" data-name="${
+        // eslint-disable-next-line prettier/prettier
+        escape(this.name)
+      }" data-speed="${this.speed}" onclick="playTranslateSound()">${svg.playSound()}</span>
             </div>
           </div>
       `;

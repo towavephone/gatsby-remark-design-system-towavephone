@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint no-new: 0 */
 const Clipboard = require('clipboard');
 
@@ -18,9 +19,12 @@ exports.onClientEntry = () => {
     showTooltip(e.trigger);
   });
 
-  window.playTranslateSound = src => {
-    const decodeSrc = decodeURIComponent(src);
-    const htmlCode = `<audio src="${decodeSrc}" controls></audio>`;
+  window.playTranslateSound = () => {
+    const name = event.currentTarget.getAttribute('data-name');
+    const lan = event.currentTarget.getAttribute('data-lan');
+    const speed = event.currentTarget.getAttribute('data-speed');
+    const src = `https://fanyi.baidu.com/gettts?lan=${lan}&text=${name}}&spd=${speed}&source=web`;
+    const htmlCode = `<audio src="${src}" controls></audio>`;
     const blob = new Blob([htmlCode], {
       type: 'text/html',
     });
